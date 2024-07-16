@@ -1,24 +1,17 @@
 let askk = require('readline-sync')
 
 class Product{
-    id: number
     nome: string
     marca: string
+    tipo: string
     preco: number
     precoCusto: number | string
 
-    constructor(id: number, nome: string, marca: string, preco: number, precoCusto: number | string){
-        this.id = id
-        this.nome = nome
-        this.marca = marca
-        this.preco = preco
-        this.precoCusto = precoCusto
-    }
-
+    
     //testar sem colocar no constructor
-    setProduct(): void{
-        this.nome = askk.question('System: Qual o nome desse produto? ')
+    getProduct(): void{
         this.marca = askk.question('System: Qual a marca dele? ')
+        this.tipo = askk.question('System: Como voce classificaria esse produto? ')
         this.preco = askk.question('System: Qual o preco unitario dele? ')
         this.precoCusto = askk.question('System: Voce sabe o preco de custo dele? Caso nao saiba, digite 0')
 
@@ -26,113 +19,43 @@ class Product{
             this.precoCusto = 'Nao informado.'
         }
     }
-
-    getProduct(): void{
-        console.log(`${this.id} - ${this.nome} - ${this.marca}
-                          R$ ${this.preco}`)
-   }
+    constructor(nome: string){
+        this.nome = nome
+    }
 }
-
 class Sell{
     numDeVenda: number
     product: Product
     quantidade: number
     valorTotal: number
-    formaPagamento: string
-    data: string | number
+    data: string
 
-    constructor(numDeVenda: number, product: Product, quantidade: number, formaPagamento: string){
+    constructor(numDeVenda: number, product: Product, quantidade: number, data: string){
         this.numDeVenda = numDeVenda
         this.product = product
         this.quantidade = quantidade
-        this.formaPagamento = formaPagamento
-        
-        this.valorTotal = this.product.preco
-        this.data = Date()
+        this.valorTotal = this.setPrecoVenda()
+        this.data = data
     }
 
 
-    getSell(): void{
-        console.log(`---VENDA ${this.numDeVenda}`)
-        console.log(`Itens da Venda: ${this.product} Un: ${this.quantidade}\nValor: ${this.valorTotal}\nForma de Pagamento: ${this.formaPagamento.padEnd(10)}Data: ${this.data}`)
+
+    setPrecoVenda(): number{
+        return this.valorTotal * this.quantidade
     }
 
-    appDesconto(): void{
-        let desconto = askk.question('Vai ser aplicado desconto? (S/N)').toUpperCase()
-                if(desconto == 'S'){
-                    desconto = Number(askk.question('Qual a % de desconto? digite apenas o numero: '))
-                    desconto = (desconto / 100) * this.product.preco
-                    this.valorTotal -= desconto
-                }
+    aplDesc(): void{
+        let porDesc = Number(askk.question('Quantos % de desconto, para me ajudar, por favor digite apenas o numero...: ')) / 100
+        let valorDesc = porDesc * this.valorTotal
+
+        this.valorTotal -= valorDesc
     }
+
 }
 
-let produtosArr: Array<Product> = []
-let vendasArr: Array<Sell> = []
+//Product --> nome, marca, tipo, preco, precoCusto
+//Sell --> numDeVenda, produto, quantidade, valor total
 
-//Adicionei para ter alguns já no "banco de dados"
-let produto1 = new Product(1, 'iPhone 12', 'Apple', 6999, 5000)
-let produto2 = new Product(2, 'Galaxy S21', 'Samsung', 5999, 4500)
-let produto3 = new Product(3, 'Notebook XPS 13', 'Dell', 8999, 6500)
-produtosArr.push(produto1)
-produtosArr.push(produto2)
-produtosArr.push(produto3)
+let produtoTV = new Product('TV Philco 42 Polegadas')
 
-
-
-function menuAPP(){
-    while(true){
-        console.clear()
-        console.log(`--LOJA D' PERIGO--\n1.CRIAR PRODUTO\n2.VER PRODUTO\n3.REGISTRAR VENDA\n4.VER VENDAS
-            
-
-            `)
-        let optionUser = askk.question('System: Qual opção deseja? \nR: ')
-        
-        switch(optionUser){
-            case '1':
-                console.clear()
-                console.log(`--CADASTRO DE PRODUTOS--`)
-                askk.question('Press anyone key for back the menu.... ')
-                break
-
-            case '2':
-                console.clear()
-                console.log('--VISUALIZAR PRODUTOS--')
-                for (let prodVez of produtosArr){
-                    prodVez.getProduct()
-                }
-                askk.question('Press anyone key for back the menu.... ')
-                console.clear()
-                break
-            case '3': //numvenda, product, quantidade, valorTotal, data
-                console.clear()
-                let numDeVenda = vendasArr.length + 1
-                let idDoProd = Number(askk.question('Qual o ID do produto? ')) - 1
-                let quantidade = Number(askk.question('Quantidade: '))
-                let formaPag = askk.question('Qual vai ser a forma de pagamento? ')
-                
-                const producto = produtosArr[idDoProd]
-
-                let venda = new Sell(numDeVenda, producto, quantidade, formaPag)
-
-                venda.appDesconto()
-
-                vendasArr.push(venda)
-                console.clear()
-                break
-            case '4':
-                console.clear()
-                console.log('--VISUALIZAR VENDAS--')
-                for (let vendaVez of vendasArr){
-                    vendaVez.getSell()
-                }
-                
-                askk.question(`---------------------\nTOTAL DE VENDA REALIZADAS: ${vendasArr.length}\nPress anyone key for back the menu.... `)
-                console.clear()
-                break
-        }  
-    }
-}
-
-menuAPP()
+let venda1 = new Sell(1, produtoTV, 2, '27/06/2024')
