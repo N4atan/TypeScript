@@ -87,25 +87,4 @@ export class NumeroComplexo {
     }
 }   
 
-let number1 = new NumeroComplexo(10, 5)
-let number2 = new NumeroComplexo(20, 10)
-
-
-let number3 = number1.somar(number2)
-let number4 = number1.sub(number2)
-let number5 = number1.mult(number2)
-let number6 = number1.div(number2)
-
-console.log(`
---------------------------
-1 -> Numero Real 1: ${number1.toString()}
-2 -> Numero Real 2: ${number2.toString()}
---------------------------
-Soma: ${number3.toString()}
-Subtrair: ${number4.toString()}
-Multiplicação: ${number5.toString()}
-Divisao: ${number6.toString()}
-Modulo do Numero 1: ${number1.modulo()}
---------------------------
-`)
 

@@ -65,10 +65,3 @@ var NumeroComplexo = /** @class */ (function () {
     return NumeroComplexo;
 }());
 exports.NumeroComplexo = NumeroComplexo;
-var number1 = new NumeroComplexo(10, 5);
-var number2 = new NumeroComplexo(20, 10);
-var number3 = number1.somar(number2);
-var number4 = number1.sub(number2);
-var number5 = number1.mult(number2);
-var number6 = number1.div(number2);
-console.log("\n--------------------------\n1 -> Numero Real 1: ".concat(number1.toString(), "\n2 -> Numero Real 2: ").concat(number2.toString(), "\n--------------------------\nSoma: ").concat(number3.toString(), "\nSubtrair: ").concat(number4.toString(), "\nMultiplica\u00E7\u00E3o: ").concat(number5.toString(), "\nDivisao: ").concat(number6.toString(), "\nModulo do Numero 1: ").concat(number1.modulo(), "\n--------------------------\n"));

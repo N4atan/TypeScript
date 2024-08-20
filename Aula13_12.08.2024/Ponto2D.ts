@@ -27,7 +27,7 @@ export class Ponto2DBase{
         Y: ${this.y}
         `
     }
-
+    
     equals(outroPonto: Ponto2DBase): boolean{
         return this.x === outroPonto.getX() && this.y === outroPonto.getY()
     }
