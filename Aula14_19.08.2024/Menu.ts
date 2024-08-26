@@ -6,9 +6,6 @@ let ask = require('readline-sync')
 let contadinho = new Contador()
 
 function funContador(){
-    const intervalo = setInterval(() => {
-        contadinho.incrementar(1); // Incrementa o valor a cada segundo
-    }, 1000); // 1000ms = 1 segundo
     
     while(true){
         console.clear()

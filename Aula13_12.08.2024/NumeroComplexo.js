@@ -35,7 +35,6 @@ var NumeroComplexo = /** @class */ (function () {
         var numeroRealNovo = (this.nReal + outroComplexo.getReal());
         var numeroImaginarioNovo = (this.nImaginario + outroComplexo.getImaginario());
         var newNumber = new NumeroComplexo(numeroRealNovo, numeroImaginarioNovo);
-        console.log("".concat(newNumber.getReal(), " + ").concat(newNumber.toString()));
         return newNumber;
     };
     NumeroComplexo.prototype.sub = function (outroComplexo) {
@@ -45,21 +44,18 @@ var NumeroComplexo = /** @class */ (function () {
         var numeroRealNovo = (this.nReal - outroComplexo.getReal());
         var numeroImaginarioNovo = (this.nImaginario - outroComplexo.getImaginario());
         var newNumber = new NumeroComplexo(numeroRealNovo, numeroImaginarioNovo);
-        console.log("".concat(newNumber.getReal(), " + ").concat(newNumber.toString()));
         return newNumber;
     };
     NumeroComplexo.prototype.mult = function (outroComplexo) {
         var numeroRealNovo = (this.nReal * outroComplexo.getReal()) - (this.nImaginario * outroComplexo.getImaginario());
         var numeroImaginarioNovo = (this.nReal * outroComplexo.getImaginario()) + (this.nImaginario * outroComplexo.getReal());
         var newNumber = new NumeroComplexo(numeroRealNovo, numeroImaginarioNovo);
-        console.log("".concat(newNumber.getReal(), " + ").concat(newNumber.toString()));
         return newNumber;
     };
     NumeroComplexo.prototype.div = function (outroComplexo) {
         var numeroRealNovo = (((this.nReal * outroComplexo.getReal()) + (this.nImaginario * outroComplexo.getImaginario()))) / (((Math.pow(outroComplexo.getReal(), 2)) + (Math.pow(outroComplexo.getImaginario(), 2))));
         var numeroImaginarioNovo = (((this.nImaginario * outroComplexo.getReal()) - (this.nReal * outroComplexo.getImaginario())) / (((Math.pow(outroComplexo.getReal(), 2)) + (Math.pow(outroComplexo.getImaginario(), 2)))));
         var newNumber = new NumeroComplexo(numeroRealNovo, numeroImaginarioNovo);
-        console.log("".concat(newNumber.getReal(), " + ").concat(newNumber.toString()));
         return newNumber;
     };
     return NumeroComplexo;

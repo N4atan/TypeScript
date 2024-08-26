@@ -45,7 +45,7 @@ export class NumeroComplexo {
         let numeroImaginarioNovo = (this.nImaginario + outroComplexo.getImaginario())
 
         let newNumber = new NumeroComplexo(numeroRealNovo, numeroImaginarioNovo)
-        console.log(`${newNumber.getReal()} + ${newNumber.toString()}`)
+        
          
         return newNumber
     }
@@ -59,7 +59,7 @@ export class NumeroComplexo {
         let numeroImaginarioNovo = (this.nImaginario - outroComplexo.getImaginario())
 
         let newNumber = new NumeroComplexo(numeroRealNovo, numeroImaginarioNovo)
-        console.log(`${newNumber.getReal()} + ${newNumber.toString()}`)
+        
          
         return newNumber
     }
@@ -70,7 +70,7 @@ export class NumeroComplexo {
         let numeroImaginarioNovo = (this.nReal * outroComplexo.getImaginario()) + (this.nImaginario * outroComplexo.getReal())
 
         let newNumber = new NumeroComplexo(numeroRealNovo, numeroImaginarioNovo)
-        console.log(`${newNumber.getReal()} + ${newNumber.toString()}`)
+        
          
         return newNumber
     }
@@ -81,7 +81,7 @@ export class NumeroComplexo {
         let numeroImaginarioNovo = ( ( (this.nImaginario * outroComplexo.getReal()) - (this.nReal * outroComplexo.getImaginario()) ) / ( ( (outroComplexo.getReal() ** 2) + (outroComplexo.getImaginario() ** 2) ) ) )
 
         let newNumber = new NumeroComplexo(numeroRealNovo, numeroImaginarioNovo)
-        console.log(`${newNumber.getReal()} + ${newNumber.toString()}`)
+        
          
         return newNumber
     }

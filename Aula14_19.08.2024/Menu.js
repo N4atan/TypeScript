@@ -6,12 +6,9 @@ var Ponto2D_1 = require("../Aula13_12.08.2024/Ponto2D");
 var ask = require('readline-sync');
 var contadinho = new Contador_1.Contador();
 function funContador() {
-    var intervalo = setInterval(function () {
-        contadinho.incrementar(1); // Incrementa o valor a cada segundo
+    while (true) {
         console.clear();
         console.log("\n        ------------- MENU 1 -----------------------\n        VALOR ATUAL: ".concat(contadinho.valorAtual(), "\n        --------------------------------------------\n        1. Incrementar +1\n        2. Zerar\n        3. Voltar\n        --------------------------------------------\n        "));
-    }, 1000); // 1000ms = 1 segundo
-    while (true) {
         var userOption = ask.question("Qual opcao? ");
         switch (userOption) {
             case '1':
