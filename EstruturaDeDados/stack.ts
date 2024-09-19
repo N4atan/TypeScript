@@ -17,7 +17,7 @@ export class Pilha<T> { //o T sign. type, especie de tipo generico especifico, j
 
     //comando peek = mostra o ultimo elemento da pilha :)
     public peek(): T | undefined {
-        return this.elementos.length[this.elementos.length - 1]
+        return this.elementos[this.elementos.length - 1]
     }
 
     //retorna boolean para vazio ou nao
@@ -38,9 +38,20 @@ export class Pilha<T> { //o T sign. type, especie de tipo generico especifico, j
 
 let minhaPilha = new Pilha<number>()
 
-minhaPilha.push(1)
-minhaPilha.push(2)
-minhaPilha.push(3)
+console.warn("Pilha vazia?", minhaPilha.isEmpy())
+
+minhaPilha.push(100)
 console.log(minhaPilha.peek())
-console.log(minhaPilha.size())
-console.log(minhaPilha.isEmpy())
+
+minhaPilha.push(55)
+console.log(minhaPilha.peek())
+
+minhaPilha.push(68)
+console.log(minhaPilha.peek())
+
+console.log("primeiro a ser add:", minhaPilha.pop())
+console.log("tamanho:", minhaPilha.size())
+
+minhaPilha.clear()
+
+
