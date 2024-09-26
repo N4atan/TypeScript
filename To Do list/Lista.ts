@@ -14,7 +14,17 @@ export class Lista {
     private tarefas: Tarefa[] = []
 
     public addTarefa (tarefa1: Tarefa): void {this.tarefas.push(tarefa1)}
-    public delTarefa (): Tarefa | undefined { return this.tarefas.shift()}
-    public alterarTarefa (tarefa1: Tarefa):void {tarefa1.finish()}
+
+    public getDropPrimeiro (): Tarefa | undefined { return this.tarefas.shift()}
+
+    public getPrimeiro (): string | void {return (this.empty()) ? "" : this.tarefas[0].exibir()}
+
+    //tenta remover, caso sim, troca o status
+    public alterarTarefa ():void {this.getDropPrimeiro()?.finish()}
+
     public getTarefas ():void {return console.table(this.tarefas)}
+
+    public size (): number {return this.tarefas.length}
+
+    public empty (): boolean {return this.size() === 0}
 }

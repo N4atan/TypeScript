@@ -9,7 +9,7 @@ export class Tarefa {
 
     constructor(private descricao: string){}
 
-    public exibir (): string { return this.descricao + ' - ' + this.status}
+    public exibir (): string { return this.descricao}
 
     public finish (): void {this.status = "Concluida"}
 }
